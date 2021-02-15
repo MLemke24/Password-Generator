@@ -12,15 +12,20 @@ var numbers
 
 var special
 
+var options
+
 function passwordLength () {
 
   length = window.prompt("How many characters would you like your password to be? Please choose between 8 and 128.");
   console.log(length);
-
+  //  return(length);
   if (length > 7 && length < 129) {
-    if (isNaN(length) || length === "" || length === null) {
-      window.alert("Please enter a valid number.");
+    alert("Great! Lets Get Started.")
+    } else {
+      if (isNaN(length) || length === "" || length === null) {
+        window.alert("Please enter a valid number.");
     }
+    parseInt(length);
   } 
 };
 
@@ -31,15 +36,23 @@ function passwordOptions() {
 
   numbers = confirm("Do you want to include numbers? Please select OK for 'Yes' and CANCEL for 'No'");
 
-  special = confirm("Do you want to include special characters? Please select OK for 'Yes' and CANCEL for 'No'")
+  special = confirm("Do you want to include special characters? Please select OK for 'Yes' and CANCEL for 'No'");
+
+  return options = {
+    lowercase: lowercase,
+    uppercase: uppercase,
+    numbers: numbers,
+    special: special,
+  };
 
 }
 
 
 
 function generatePassword () {
-  var length = passwordLength();
-  var options = passwordOptions();
+  length = passwordLength();
+  options = passwordOptions();
+  console.log(options);
   var uppercaseLettersArray = [
     'A',
     'B',
@@ -118,12 +131,41 @@ function generatePassword () {
     '?',
     '@',
   ];
+
+
+  var possiblePasswordArray = []
   var passwordArray = []
 
+  if(options.lowercase) {
+    possiblePasswordArray =  possiblePasswordArray.concat(lowercaseLettersArray);
+  }
+
+  if(options.uppercase) {
+    possiblePasswordArray =  possiblePasswordArray.concat(uppercaseLettersArray);
+  }
+
+  if(options.numbers) {
+    possiblePasswordArray =  possiblePasswordArray.concat(numbersArray);
+  }
+
+  if(options.special) {
+    possiblePasswordArray =  possiblePasswordArray.concat(specialCharactersArray);
+  }
+
+console.log(possiblePasswordArray);
+
+
+
+console.log(passwordArray);
+
+debugger;
+
+};
+
+for (var i = 0; i < length; i++) {
+  passwordArray = passwordArray.concat(possiblePasswordArray[Math.floor(Math.random() *  possiblePasswordArray.length)]);
 
 }
-
-
 
 // Write password to the #password input
 function writePassword() {
@@ -134,12 +176,8 @@ function writePassword() {
 
 };
 
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-// let i,
-//  randomPassowrd ="";
-//  for (i = 0; i < 16; i++) {
-//    randomPassord = randomPassword 
-//  }
