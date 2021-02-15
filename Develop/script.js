@@ -95,13 +95,14 @@ var specialCharactersArray = [
     } else {
 
   lowercase = confirm("Do you want to include lowercase letters? Please select OK for 'Yes' and CANCEL for 'No'");
+  console.log(lowercase);
 
   uppercase = confirm("Do you want to include uppercase letters? Please select OK for 'Yes' and CANCEL for 'No'");
-
+      console.log(uppercase);
   numbers = confirm("Do you want to include numbers? Please select OK for 'Yes' and CANCEL for 'No'");
-
+      console.log(numbers);
   special = confirm("Do you want to include special characters? Please select OK for 'Yes' and CANCEL for 'No'");
-
+      console.log(special);
   generatePassword(length, uppercase, lowercase, numbers, special);
   };
  
@@ -125,26 +126,20 @@ function generatePassword () {
     possiblePasswordArray =  possiblePasswordArray.concat(specialCharactersArray);
   }
 
-console.log(possiblePasswordArray);
-
-console.log(passwordArray);
 
 for (var i = 0; i < length; i++) {
   passwordArray = passwordArray.concat(possiblePasswordArray[Math.floor(Math.random() *  possiblePasswordArray.length)]);
 
+   console.log(passwordArray);
+};
 
 };
 
-
-
-
-};
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 };
