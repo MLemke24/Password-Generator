@@ -93,10 +93,10 @@ function generatePassword () {
   // Length 
 
   length = parseInt(window.prompt("How many characters would you like your password to be? Please choose between 8 and 128."));
-  console.log(length);
-  if (length < 7 && length > 128) {
-    alert("Not a valid response")
-    } else {
+  if (length < 7 || length > 128) {
+    alert("Not a valid response, refresh the page and try again!")
+    }
+    else {
 
       // True False Questions 
   lowercase = confirm("Do you want to include lowercase letters? Please select OK for 'Yes' and CANCEL for 'No'");
